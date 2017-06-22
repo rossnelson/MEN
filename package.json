@@ -4,6 +4,7 @@
   "main": "app.js",
   "license": "MIT",
   "scripts": {
+    "console": "./node_modules/.bin/ts-node ./bin/console.ts",
     "serve": "./node_modules/.bin/nodemon",
     "compile": "./node_modules/.bin/tsc",
     "start": "node ./dist/boot.js"

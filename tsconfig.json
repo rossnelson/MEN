@@ -11,7 +11,7 @@
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
         "moduleResolution": "node",
-        "baseUrl": "./",
+        "baseUrl": ".",
         "typeRoots": [
             "node_modules/@types"
         ],
