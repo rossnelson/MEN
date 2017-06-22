@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "main": "app.js",
   "license": "MIT",
+  "scripts": {
+    "serve": "./node_modules/.bin/nodemon",
+    "compile": "./node_modules/.bin/tsc",
+    "start": "node ./dist/boot.js"
+  },
   "dependencies": {
     "axios": "^0.16.2",
     "body-parser": "^1.17.2",
@@ -20,6 +25,7 @@
   "devDependencies": {
     "@types/node": "^8.0.1",
     "jasmine": "^2.6.0",
+    "nodemon": "^1.11.0",
     "ts-node": "^3.1.0",
     "typescript": "^2.3.4"
   }

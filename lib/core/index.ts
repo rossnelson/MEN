@@ -2,7 +2,7 @@ export function Hi() {
   console.log('hi');
 };
 
-export getModel(name) {
+export function getModel(name) {
   return name;
 }
 

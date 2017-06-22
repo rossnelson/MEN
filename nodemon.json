@@ -1,0 +1,11 @@
+{
+  "watch": [
+    "./"
+  ],
+  "ext": "ts",
+  "ignore": [
+    "spec"
+  ],
+  "exec": "./node_modules/.bin/ts-node ./boot.ts"
+}
+
