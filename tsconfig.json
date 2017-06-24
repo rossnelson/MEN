@@ -22,7 +22,8 @@
             "lib/": ["lib/"],
             "models/": ["app/models/"],
             "builders/": ["app/builders/"],
-            "actors/": ["app/actors/"]
+            "actors/": ["app/actors/"],
+            "vendor": ["vendor/*"]
         }
     },
     "exclude": [

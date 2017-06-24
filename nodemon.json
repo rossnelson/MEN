@@ -6,6 +6,6 @@
   "ignore": [
     "spec"
   ],
-  "exec": "./node_modules/.bin/ts-node ./boot.ts"
+  "exec": "./node_modules/.bin/ts-node -r tsconfig-paths/register ./boot.ts"
 }
 
