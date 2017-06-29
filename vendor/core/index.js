@@ -1,22 +1,16 @@
-import * as Q from 'q';
-import * as _ from 'lodash';
+const Q = require('q');
+const _ = require('lodash');
 
-import Config from './setup_config';
-import Logger from './setup_logger';
-import LoadPaths from './setup_load_paths';
-import DB from './setup_db';
-import Redis from './setup_redis';
-import Server from './setup_express';
+const Config = require('./setup_config');
+const Logger = require('./setup_logger');
+const LoadPaths = require('./setup_load_paths');
+const DB = require('./setup_db');
+const Redis = require('./setup_redis');
+const Server = require('./setup_express');
 
 process.env.CORE_ROOT = __dirname;
 
-export default class App {
-  public static Logger;
-  public static Server;
-  public static LoadPaths;
-  private static DB;
-  private static Redis;
-  private static Modules;
+module.exports = class App {
 
   static init() {
     return Config.init()

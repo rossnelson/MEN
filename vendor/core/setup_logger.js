@@ -1,10 +1,8 @@
-import * as Q from 'q';
-import * as winston from 'winston';
-import * as path from 'path';
+const Q = require('q');
+const winston = require('winston');
+const path = require('path');
 
-export default class Logger  {
-  public static log;
-
+module.exports = class Logger  {
   static init(App) {
     const deferred = Q.defer();
 

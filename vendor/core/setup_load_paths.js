@@ -1,14 +1,12 @@
-import * as Q from 'q';
-import { each, map, remove, includes } from 'lodash';
-import * as fs from 'fs';
-import * as path from 'path';
-import * as mongoose from 'mongoose';
-import * as requirePath from 'require-path';
-import { camelize } from 'inflected';
+const Q = require('q');
+const { each, map, remove, includes } = require('lodash');
+const fs = require('fs');
+const path = require('path');
+const mongoose = require('mongoose');
+const requirePath = require('require-path');
+const { camelize } = require('inflected');
 
-export default class LoadPaths {
-  private static Modules;
-
+module.exports = class LoadPaths {
   static init(App) {
     return Q.resolve(loadPaths.call(this))
       .then(loadClasses.bind(this))
@@ -31,7 +29,7 @@ function loadClasses() {
   const promises = map(this.loadDirs, dir => {
     return requirePath({
       path: path.join(loadPathsRoot, dir),
-      include: ['*.ts', '*.json'],
+      include: ['*.js', '*.json'],
     })
     .then(modules => {
       const kind = camelize(dir);

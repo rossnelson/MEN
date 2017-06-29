@@ -1,12 +1,8 @@
-import * as Q from 'q';
-import * as _ from 'lodash';
-import * as redis from 'redis';
+const Q = require('q');
+const _ = require('lodash');
+const redis = require('redis');
 
-export default class Redis {
-  private static pub;
-  private static sub;
-  private static url;
-
+module.exports = class Redis {
   static init(App) {
     if (!process.env.REDIS_URL) {
       return;

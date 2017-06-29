@@ -1,13 +1,14 @@
-import * as express from 'express';
-import * as bodyParser from 'body-parser';
-import * as Q from 'q';
-import * as fs from 'fs';
-import * as path from 'path';
-import * as _ from 'lodash';
+const express = require('express');
+const bodyParser = require('body-parser');
+const Q = require('q');
+const fs = require('fs');
+const path = require('path');
+const _ = require('lodash');
+const requirePath = require('require-path');
 
 let Context;
 
-export default class Server  {
+module.exports = class Server  {
   static init(App) {
     Context = App;
 
@@ -59,18 +60,11 @@ function loadRoutes() {
   const files = fs.readdirSync(routesPath);
 
   try {
-    _.forEach(files, function (file) {
-      if (file.match(/\.ts$/)) {
-        Context.Logger.debug('Loading route "' + file + '".');
-        try {
-          const routes = require(path.join(routesPath, file));
-          routes(Context);
-        } catch (e) {
-          Context.Logger.error('Failed to load route "' + file + '":', e);
-          process.exit(1);
-        }
-      }
-    });
+    return requirePath({
+      path: routesPath,
+      include: ['*.js', '*.json'],
+    })
+    .then(modules => _.each(modules, module => module(Context)))
   } catch (e) {
     if (e.code !== 'ENOENT') {
       Context.Logger.error('Failed to load routes:', e);

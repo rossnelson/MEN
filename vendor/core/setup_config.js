@@ -1,7 +1,7 @@
-import * as Q from 'q';
-import * as path from 'path';
+const Q = require('q');
+const path = require('path');
 
-export default class Config  {
+module.exports = class Config  {
 
   static init() {
     try {

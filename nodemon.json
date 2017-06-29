@@ -2,10 +2,10 @@
   "watch": [
     "./"
   ],
-  "ext": "ts",
+  "ext": "js",
   "ignore": [
     "spec"
   ],
-  "exec": "./node_modules/.bin/ts-node -r tsconfig-paths/register ./boot.ts"
+  "exec": "node --harmony --use_strict ./boot.js"
 }
 

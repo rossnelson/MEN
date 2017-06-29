@@ -1,10 +1,10 @@
-import * as Q from 'q';
-import * as path from 'path';
-import * as mongoose from 'mongoose';
+const Q = require('q');
+const path = require('path');
+const mongoose = require('mongoose');
 
 let Context;
 
-export default class DB {
+module.exports = class DB {
 
   static init(App) {
     Context = App;

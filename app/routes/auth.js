@@ -1,4 +1,4 @@
-export = function(App) {
+module.exports = function(App) {
   const app = new App();
 
   App.Server.get('/auth/token', (req, res) => {
