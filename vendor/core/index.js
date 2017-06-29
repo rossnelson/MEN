@@ -7,6 +7,7 @@ const LoadPaths = require('./setup_load_paths');
 const DB = require('./setup_db');
 const Redis = require('./setup_redis');
 const Server = require('./setup_express');
+const Cluster = require('./setup_cluster');
 
 process.env.CORE_ROOT = __dirname;
 
@@ -25,6 +26,7 @@ module.exports = class App {
   static serve() {
     this.init()
     .then(Server.init.bind(Server, this))
+    //.then(Cluster.init.bind(Cluster, this))
     .then(() => this.Logger.info('SERVING'))
   }
 
