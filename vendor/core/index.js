@@ -8,6 +8,7 @@ const DB = require('./setup_db');
 const Redis = require('./setup_redis');
 const Server = require('./setup_express');
 const Cluster = require('./setup_cluster');
+const Sockets = require('./setup_sockets');
 
 process.env.CORE_ROOT = __dirname;
 
@@ -19,6 +20,7 @@ module.exports = class App {
     .then(LoadPaths.init.bind(LoadPaths, this))
     .then(DB.init.bind(DB, this))
     .then(Redis.init.bind(Redis, this))
+    .then(Sockets.init.bind(Sockets, this))
     .then(() => this.Logger.info('INITIALIZED'))
     .catch(err => console.log(err));
   }

@@ -5,6 +5,9 @@ const redis = require('redis');
 module.exports = class Redis {
   static init(App) {
     if (!process.env.REDIS_URL) {
+      App.Logger.info(
+        'Redis Skipped: Redis not configured. Add REDIS_URL to the env config'
+      );
       return;
     }
 
@@ -13,7 +16,6 @@ module.exports = class Redis {
     App.Redis = this;
 
     this.url = process.env.REDIS_URL;
-    console.log(this.url);
     this.pub = redis.createClient(this.url);
 
     this.pub.on('ready', () => {
