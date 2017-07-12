@@ -22,6 +22,7 @@ module.exports = class Sockets  {
     }
 
     Context = App;
+    App.Sockets = this;
 
     return setupServer()
     .then(setupServerError.bind(this))

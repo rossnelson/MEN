@@ -14,17 +14,24 @@ module.exports = class Server  {
 
     const deferred = Q.defer();
 
+    if (process.env.EXPRESS_DEBUG) {
+      process.env.DEBUG = 'express:*';
+    }
+
     const expressApp = express();
     Context.Server = expressApp;
 
     setupBodyParser.call(this)
     .then(setupCORS.bind(this))
     .then(setupStatusEndpoint.bind(this))
-    .then(loadRoutes.bind(this))
-    .then(listen.bind(this))
     .then(deferred.resolve);
 
     return deferred.promise;
+  }
+
+  static listen() {
+    return loadRoutes.call(this)
+    .then(listen.bind(this))
   }
 }
 
